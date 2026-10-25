@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<meta name="description" content="Fahim Ahmed Asif — Founder & CEO at NodeX Station. Full-stack MERN developer building web apps, e-commerce stores and AI automations from Khulna, Bangladesh." />
+<link rel="icon" href="data:," />
+<title>Fahim Ahmed Asif — MERN Developer & Founder, NodeX Station</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FFFFFF; --bg-2:#FFF9F3; --panel:rgba(255,255,255,.72); --panel-2:rgba(0,0,0,.03);
+    --line:rgba(0,0,0,.11); --line-soft:rgba(0,0,0,.07);
+    --text:#131316; --muted:#4B4B52; --faint:#6E6E76;
+    --accent:#E85D04; --accent-deep:#D9480F; --accent-2:#F96D00; --accent-2-deep:#E85D04;
+    --ink:#9C4A02;
+    --grad:linear-gradient(92deg,#FF7A18 0%,#FFB25E 100%);
+    --radius:18px;
+    --font-d:"Sora",system-ui,sans-serif; --font-b:"Manrope",system-ui,sans-serif; --font-m:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:rgba(255,140,46,.32);color:#1A0D00}
+  a{color:inherit}
+  img{max-width:100%}
+  :focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:6px}
+
+  /* ambient background */
+  .bg-fx{position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(720px 420px at 12% -6%,rgba(249,109,0,.10),transparent 62%),
+    radial-gradient(760px 460px at 88% 4%,rgba(255,176,102,.13),transparent 62%),
+    radial-gradient(900px 600px at 50% 112%,rgba(249,109,0,.06),transparent 65%),var(--bg)}
+  .bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:linear-gradient(rgba(0,0,0,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.045) 1px,transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 0%,#000 30%,transparent 78%);mask-image:radial-gradient(ellipse 90% 55% at 50% 0%,#000 30%,transparent 78%)}
+
+  .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+  section{padding:104px 0 8px;scroll-margin-top:110px}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-m);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#C25200}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--grad)}
+  h1,h2,h3{font-family:var(--font-d);line-height:1.12;margin:0;letter-spacing:-.01em}
+  h2{font-size:clamp(1.9rem,4.2vw,2.7rem);font-weight:700;margin:14px 0 12px}
+  .sec-sub{color:var(--muted);max-width:640px;margin:0 0 42px;font-size:1.02rem}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .glass{background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:var(--radius);box-shadow:0 12px 34px rgba(26,13,0,.05)}
+
+  /* ---------- nav ---------- */
+  header{position:fixed;top:16px;left:0;right:0;z-index:60}
+  .nav{display:flex;align-items:center;gap:18px;padding:10px 12px 10px 18px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 14px 36px rgba(26,13,0,.10)}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0}
+  .mark{width:36px;height:36px;border-radius:11px;background:var(--grad);display:grid;place-items:center;font-family:var(--font-d);font-weight:800;font-size:.86rem;color:#1A0D00;box-shadow:0 0 22px rgba(255,140,46,.45)}
+  .brand b{font-family:var(--font-d);font-weight:700;font-size:.95rem;display:block;line-height:1.15;color:var(--text)}
+  .brand span{font-size:.68rem;color:var(--faint);font-family:var(--font-m);letter-spacing:.06em}
+  .nav-links{display:flex;gap:4px;margin-inline:auto}
+  .nav-links a{text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;padding:8px 14px;border-radius:999px;transition:color .25s,background .25s}
+  .nav-links a:hover{color:#000;background:rgba(0,0,0,.05)}
+  .avail{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:var(--ink);background:rgba(249,109,0,.09);border:1px solid rgba(249,109,0,.4);padding:8px 14px;border-radius:999px;white-space:nowrap;text-decoration:none}
+  .dot{width:8px;height:8px;border-radius:50%;background:#F96D00;box-shadow:0 0 0 0 rgba(249,109,0,.55);animation:pulse 2.2s infinite;flex-shrink:0}
+  @keyframes pulse{70%{box-shadow:0 0 0 7px rgba(255,140,46,0)}100%{box-shadow:0 0 0 0 rgba(255,140,46,0)}}
+  .burger{display:none;background:rgba(0,0,0,.04);border:1px solid var(--line);border-radius:11px;width:40px;height:40px;cursor:pointer;color:#111;align-items:center;justify-content:center;margin-left:auto}
+  .mobile-menu{display:none;margin-top:10px;padding:10px;border-radius:20px;background:rgba(255,255,255,.96);border:1px solid var(--line);backdrop-filter:blur(18px);box-shadow:0 16px 40px rgba(26,13,0,.10)}
+  .mobile-menu.open{display:block}
+  .mobile-menu a{display:block;padding:12px 14px;border-radius:12px;text-decoration:none;color:var(--muted);font-weight:600}
+  .mobile-menu a:hover{background:rgba(0,0,0,.05);color:#000}
+
+  /* ---------- hero ---------- */
+  .hero{padding:168px 0 30px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+  .hero h1{font-size:clamp(2.5rem,5.4vw,4.1rem);font-weight:800;margin:20px 0 18px}
+  .hero h1 .glow{text-shadow:none;filter:drop-shadow(0 0 22px rgba(249,109,0,.22))}
+  .hero p.lede{color:var(--muted);font-size:1.13rem;max-width:540px;margin:0 0 14px}
+  .hero p.lede strong{color:#09090B;font-weight:700}
+  .role-line{font-family:var(--font-m);font-size:.82rem;color:#C25200;letter-spacing:.04em;margin:0 0 30px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-d);font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 26px;border-radius:14px;border:1px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s}
+  .btn svg{width:17px;height:17px}
+  .btn-primary{background:var(--grad);color:#1A0D00;box-shadow:0 10px 34px rgba(249,109,0,.35),0 4px 18px rgba(255,176,102,.22)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(249,109,0,.5),0 6px 22px rgba(255,176,102,.3)}
+  .btn-ghost{background:rgba(255,255,255,.6);border-color:var(--line);color:#111;backdrop-filter:blur(10px)}
+  .btn-ghost:hover{transform:translateY(-2px);background:#fff;border-color:rgba(0,0,0,.28)}
+  .hero-stats{display:flex;gap:0;margin-top:44px;border-top:1px solid var(--line-soft);padding-top:24px;flex-wrap:wrap}
+  .stat{padding-right:30px;margin-right:30px;border-right:1px solid var(--line-soft)}
+  .stat:last-child{border-right:0;margin-right:0;padding-right:0}
+  .stat b{font-family:var(--font-d);font-size:1.55rem;font-weight:800;display:block;line-height:1.1}
+  .stat span{font-size:.78rem;color:var(--faint);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+
+  /* terminal */
+  .term-wrap{position:relative}
+  .term-wrap::before{content:"";position:absolute;inset:-1px;border-radius:22px;padding:1px;background:conic-gradient(from var(--a,0deg),rgba(255,140,46,.75),rgba(255,176,102,.2),rgba(0,0,0,.1),rgba(255,176,102,.65),rgba(255,140,46,.75));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin-border 7s linear infinite;pointer-events:none}
+  @property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+  @keyframes spin-border{to{--a:360deg}}
+  .terminal{background:#0C0C0F;border-radius:21px;overflow:hidden;box-shadow:0 30px 64px rgba(26,13,0,.28)}
+  .term-head{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+  .tdot{width:11px;height:11px;border-radius:50%}
+  .term-head .file{margin-left:10px;font-family:var(--font-m);font-size:.76rem;color:#A1A1AA}
+  .term-head .live{margin-left:auto;font-family:var(--font-m);font-size:.68rem;color:#FF8C2E;display:flex;align-items:center;gap:6px}
+  .term-body{padding:20px 20px 24px;font-family:var(--font-m);font-size:.82rem;line-height:1.85;min-height:308px;color:#D4D4D8;overflow:hidden}
+  .term-body .k{color:#FF8C2E}
+  .tk{color:#FFFFFF}.ts{color:#FFD9AE}.tn{color:#FDBA74}.tp{color:#FFCF99}.tc{color:#52525B;font-style:italic}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .term-foot{display:flex;gap:8px;flex-wrap:wrap;padding:14px 16px;border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.015)}
+  .chip{font-family:var(--font-m);font-size:.7rem;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.14);color:#A1A1AA;background:rgba(255,255,255,.03)}
+  .chip.on{color:#FFD9AE;border-color:rgba(255,140,46,.45);background:rgba(249,109,0,.12)}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .about-card{padding:30px}
+  .about-card p{color:var(--muted);margin:0 0 14px}
+  .about-card p strong{color:#18181B}
+  .fact-list{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:13px}
+  .fact-list li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:.95rem}
+  .fact-list svg{width:18px;height:18px;color:var(--accent);flex-shrink:0;margin-top:3px}
+  .fact-list b{color:#09090B}
+  .svc-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}
+  .svc{font-size:.8rem;font-weight:700;padding:8px 14px;border-radius:999px;background:rgba(0,0,0,.03);border:1px solid var(--line);color:#27272A}
+
+  /* ---------- projects ---------- */
+  .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:30px}
+  .filter{font-family:var(--font-d);font-weight:600;font-size:.86rem;padding:10px 19px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);cursor:pointer;transition:all .25s}
+  .filter:hover{color:#000;border-color:rgba(0,0,0,.3)}
+  .filter.active{background:var(--grad);color:#1A0D00;border-color:transparent;box-shadow:0 8px 26px rgba(249,109,0,.35)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .proj{display:flex;flex-direction:column;overflow:hidden;border-radius:var(--radius);background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(12px);transition:transform .35s,border-color .35s,box-shadow .35s}
+  .proj:hover{transform:translateY(-6px);border-color:rgba(249,109,0,.55);box-shadow:0 24px 46px rgba(26,13,0,.13),0 0 0 1px rgba(249,109,0,.14),0 12px 36px rgba(249,109,0,.12)}
+  .proj.hide{display:none}
+  .thumb{height:172px;position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+  .thumb-inner{position:absolute;inset:0;transition:transform .5s cubic-bezier(.2,.7,.3,1);padding:18px}
+  .proj:hover .thumb-inner{transform:scale(1.06)}
+  .thumb .bar{height:9px;border-radius:5px;background:rgba(255,255,255,.16);margin-bottom:9px}
+  .thumb .row{display:flex;gap:9px}.thumb .row .bar{flex:1}
+  .thumb .pill{position:absolute;top:14px;right:14px;font-family:var(--font-m);font-size:.64rem;letter-spacing:.08em;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.22);color:#fff;backdrop-filter:blur(6px)}
+  .thumb .big{font-family:var(--font-d);font-weight:800;font-size:1.28rem;color:#fff;letter-spacing:-.01em;margin-top:22px;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+  .thumb .small{font-family:var(--font-m);font-size:.7rem;color:rgba(255,255,255,.75)}
+  .t-orange{background:linear-gradient(135deg,#1C0E02,#7C3A06 45%,#3A1D04)}
+  .t-light{background:linear-gradient(135deg,#101010,#26262B 48%,#8A4308)}
+  .t-mix{background:linear-gradient(135deg,#140B02,#8A4308 40%,#1F1F23)}
+  .t-slate{background:linear-gradient(135deg,#18181B,#27272A 55%,#7C3A06)}
+  .t-deep{background:linear-gradient(135deg,#0B0703,#5C2E05 50%,#17171A)}
+  .t-ink{background:linear-gradient(135deg,#101012,#232326 55%,#7C3A06)}
+  .proj-body{padding:22px;display:flex;flex-direction:column;gap:11px;flex:1}
+  .proj-body h3{font-size:1.08rem;font-weight:700}
+  .proj-body p{color:var(--muted);font-size:.9rem;margin:0;flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .tag{font-family:var(--font-m);font-size:.66rem;padding:4px 9px;border-radius:7px;background:rgba(249,109,0,.07);border:1px solid rgba(249,109,0,.28);color:var(--ink)}
+  .tag.g{background:rgba(249,109,0,.1);border-color:rgba(249,109,0,.38);color:var(--ink)}
+  .proj-actions{display:flex;gap:9px;padding-top:5px}
+  .mini-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:.83rem;font-weight:700;font-family:var(--font-d);padding:10px 12px;border-radius:11px;text-decoration:none;transition:all .25s}
+  .mini-btn svg{width:15px;height:15px}
+  .mini-btn.live{background:var(--grad);color:#1A0D00}
+  .mini-btn.live:hover{box-shadow:0 8px 22px rgba(249,109,0,.4)}
+  .mini-btn.code{background:rgba(0,0,0,.03);border:1px solid var(--line);color:#27272A}
+  .mini-btn.code:hover{background:rgba(0,0,0,.07)}
+  .mini-btn.off{opacity:.45;pointer-events:none}
+
+  /* ---------- skills ---------- */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .skill-card{padding:28px;transition:border-color .3s,box-shadow .3s,transform .3s}
+  .skill-card:hover{border-color:rgba(249,109,0,.45);box-shadow:0 18px 40px rgba(26,13,0,.10),0 0 30px rgba(249,109,0,.08);transform:translateY(-3px)}
+  .skill-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .skill-ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:rgba(249,109,0,.1);border:1px solid rgba(255,140,46,.3);color:var(--accent)}
+  .skill-ic svg{width:22px;height:22px}
+  .skill-ic.c{background:rgba(255,176,102,.09);border-color:rgba(255,176,102,.3);color:var(--accent-2)}
+  .skill-head h3{font-size:1.05rem;font-weight:700}
+  .skill-head span{font-size:.8rem;color:var(--faint)}
+  .srow{margin-bottom:15px}
+  .srow:last-child{margin-bottom:0}
+  .srow-top{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;font-weight:600;margin-bottom:7px}
+  .lvl{font-family:var(--font-m);font-size:.64rem;letter-spacing:.07em;padding:3px 9px;border-radius:999px;background:rgba(0,0,0,.04);border:1px solid var(--line);color:var(--muted)}
+  .lvl.hot{color:var(--ink);border-color:rgba(249,109,0,.45);background:rgba(249,109,0,.09)}
+  .bar-track{height:6px;border-radius:99px;background:rgba(0,0,0,.08);overflow:hidden}
+  .bar-fill{height:100%;width:0;border-radius:99px;background:var(--grad);transition:width 1.1s cubic-bezier(.2,.7,.25,1);box-shadow:0 0 10px rgba(249,109,0,.35)}
+
+  /* ---------- ventures ---------- */
+  .vent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .vent{padding:28px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+  .vent:hover{transform:translateY(-5px);border-color:rgba(255,140,46,.45)}
+  .vent::after{content:"";position:absolute;top:-70px;right:-70px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(255,140,46,.16),transparent 70%);pointer-events:none}
+  .vent .vmark{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-family:var(--font-d);font-weight:800;background:rgba(0,0,0,.03);border:1px solid var(--line);color:var(--accent);font-size:1rem}
+  .vent h3{font-size:1.22rem;font-weight:700}
+  .vent .vrole{font-family:var(--font-m);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#C25200}
+  .vent p{color:var(--muted);font-size:.92rem;margin:0}
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+  .metric{background:rgba(0,0,0,.025);border:1px solid var(--line-soft);border-radius:13px;padding:12px 14px}
+  .metric b{font-family:var(--font-d);font-size:1.12rem;display:block;line-height:1.15}
+  .metric span{font-size:.72rem;color:var(--faint);font-weight:600}
+  .vent a.vlink{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.88rem;color:var(--accent);text-decoration:none;font-family:var(--font-d)}
+  .vent a.vlink svg{width:15px;height:15px;transition:transform .25s}
+  .vent a.vlink:hover svg{transform:translate(2px,-2px)}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start}
+  .c-info{padding:30px}
+  .c-info h3{font-size:1.3rem;margin-bottom:10px}
+  .c-info p{color:var(--muted);margin:0 0 22px;font-size:.95rem}
+  .email-box{display:flex;align-items:center;gap:10px;background:#FFF8F1;border:1px solid var(--line);border-radius:13px;padding:8px 8px 8px 16px;margin-bottom:22px}
+  .email-box code{font-family:var(--font-m);font-size:.85rem;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+  .copy-btn{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);color:#18181B;font-family:var(--font-d);font-weight:700;font-size:.8rem;padding:9px 14px;border-radius:10px;cursor:pointer;transition:all .25s;flex-shrink:0}
+  .copy-btn:hover{background:rgba(249,109,0,.1);border-color:rgba(249,109,0,.55)}
+  .copy-btn svg{width:14px;height:14px}
+  .copy-btn.done{background:rgba(249,109,0,.16);border-color:var(--accent-deep);color:var(--ink)}
+  .socials{display:flex;gap:10px;flex-wrap:wrap}
+  .soc{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:.85rem;font-weight:700;padding:11px 16px;border-radius:12px;background:#fff;border:1px solid var(--line);transition:all .25s}
+  .soc svg{width:16px;height:16px}
+  .soc:hover{border-color:rgba(249,109,0,.55);background:rgba(249,109,0,.06);transform:translateY(-2px)}
+  .loc-line{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin-top:22px}
+  .loc-line svg{width:16px;height:16px;color:var(--accent)}
+  form.cform{padding:30px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-family:var(--font-d);font-weight:600;font-size:.85rem;margin-bottom:8px}
+  .field input,.field textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;color:#131316;font-family:var(--font-b);font-size:.95rem;padding:13px 15px;transition:border-color .25s,box-shadow .25s;resize:vertical}
+  .field input::placeholder,.field textarea::placeholder{color:#A1A1AA}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent-2);box-shadow:0 0 0 3px rgba(249,109,0,.16)}
+  .field.ok input,.field.ok textarea{border-color:rgba(232,93,4,.65)}
+  .field.err input,.field.err textarea{border-color:rgba(217,72,15,.7)}
+  .hint{font-size:.76rem;margin-top:6px;min-height:1em;display:none}
+  .field.err .hint{display:block;color:#C2410C}
+  .field.ok .hint{display:block;color:var(--ink)}
+  .submit-btn{width:100%;justify-content:center;position:relative;overflow:hidden}
+  .submit-btn.sending{opacity:.85;pointer-events:none}
+  .submit-btn.sent{background:linear-gradient(92deg,#E85D04,#F96D00);color:#FFF4E8}
+  .form-note{font-size:.78rem;color:var(--faint);text-align:center;margin:13px 0 0}
+
+  /* ---------- footer / misc ---------- */
+  footer{margin-top:110px;border-top:1px solid var(--line-soft);padding:34px 0 44px;background:rgba(0,0,0,.015)}
+  .foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .foot p{margin:0;color:var(--faint);font-size:.85rem}
+  .clock{margin-left:auto;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-m);font-size:.8rem;color:var(--muted);background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+  .clock svg{width:14px;height:14px;color:var(--accent)}
+  #toTop{position:fixed;right:22px;bottom:22px;z-index:55;width:48px;height:48px;border-radius:15px;border:1px solid rgba(249,109,0,.5);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);color:var(--accent);cursor:pointer;display:grid;place-items:center;opacity:.92;pointer-events:auto;transition:all .35s;box-shadow:0 12px 30px rgba(26,13,0,.16)}
+  #toTop.show{opacity:1;pointer-events:auto;transform:none}
+  #toTop:hover{background:rgba(249,109,0,.12)}
+  #toTop svg{width:20px;height:20px}
+  #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);z-index:70;background:rgba(20,13,5,.95);border:1px solid rgba(255,140,46,.55);color:#FFEBD5;font-weight:700;font-size:.88rem;padding:13px 20px;border-radius:13px;transition:transform .4s cubic-bezier(.2,.8,.3,1);box-shadow:0 18px 44px rgba(0,0,0,.55);display:flex;gap:9px;align-items:center}
+  #toast.show{transform:translate(-50%,0)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:1020px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .proj-grid{grid-template-columns:repeat(2,1fr)}
+    .vent-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:720px){
+    section{padding-top:76px}
+    .hero{padding-top:138px}
+    .nav-links{display:none}
+    .avail span.txt{display:none}
+    .avail{padding:8px 11px}
+    .burger{display:flex}
+    .proj-grid,.skills-grid,.about-grid{grid-template-columns:1fr}
+    .stat{padding-right:18px;margin-right:18px}
+    .term-body{min-height:0;font-size:.76rem}
+    .clock{margin-left:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="bg-fx" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Fahim Ahmed Asif — home">
+        <span class="mark">FA</span>
+        <span><b>Fahim Ahmed Asif</b><span>FOUNDER · NODEX STATION</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#ventures">Ventures</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="avail" href="#contact"><span class="dot" aria-hidden="true"></span><span class="txt">Open for new projects</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#ventures">Ventures</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="avail" style="cursor:default"><span class="dot" aria-hidden="true"></span> Open for new projects / collaborations</span>
+        <h1>I build products that <span class="grad-text glow">sell, scale</span> &amp; automate themselves.</h1>
+        <p class="lede">I'm <strong>Fahim Ahmed Asif</strong> — Founder &amp; CEO of <strong>NodeX Station</strong>. I build <strong>MERN web apps, e-commerce stores and AI automations</strong> that help businesses sell more and run with less manual work.</p>
+        <p class="role-line">// Full-Stack MERN Developer · AI Automation · Khulna, Bangladesh</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View Work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="btn btn-ghost" href="#contact">Let's Connect
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>24</b><span>Gumroad starters live</span></div>
+          <div class="stat"><b>3</b><span>Active ventures</span></div>
+          <div class="stat"><b>MERN</b><span>Core stack</span></div>
+        </div>
+      </div>
+
+      <div class="term-wrap reveal in">
+        <div class="terminal" role="img" aria-label="Code profile of Fahim Ahmed Asif: MERN developer, founder of NodeX Station, skills in React, Node.js, TypeScript and AI automation">
+          <div class="term-head">
+            <span class="tdot" style="background:#FF6B1A"></span><span class="tdot" style="background:#E4E4E7"></span><span class="tdot" style="background:#FF8C2E"></span>
+            <span class="file">fahim@nodex: ~/developer.ts</span>
+            <span class="live"><span class="dot" style="width:6px;height:6px"></span>LIVE</span>
+          </div>
+          <div class="term-body" id="termBody" aria-hidden="true"></div>
+          <div class="term-foot">
+            <span class="chip on">React</span><span class="chip on">Next.js</span><span class="chip">Node.js</span><span class="chip">TypeScript</span><span class="chip">MongoDB</span><span class="chip">AI Automation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <span class="kicker">About</span>
+      <h2>Developer by craft, <span class="grad-text">founder by default.</span></h2>
+      <p class="sec-sub">I don't just ship code — I run the businesses that depend on it. Every store, starter and automation in this portfolio is something I built, launched and operate.</p>
+      <div class="about-grid">
+        <div class="glass about-card reveal">
+          <p>From <strong>Khulna, Bangladesh</strong>, I founded <strong>NodeX Station</strong> to build production-grade software for clients and for my own product line: <strong>24 MERN starter products live on Gumroad</strong>, two running e-commerce brands, and automation systems that handle outreach, content and lead generation.</p>
+          <p>My focus sits where engineering meets revenue — <strong>checkout flows that convert, inventory that's accurate in real time, and automations that quietly do the repetitive work</strong> so a small team can move like a big one.</p>
+          <div class="svc-row">
+            <span class="svc">Web App Development</span><span class="svc">E-commerce Stores</span><span class="svc">AI Automation</span><span class="svc">SaaS Starters</span><span class="svc">Digital Marketing Systems</span>
+          </div>
+        </div>
+        <div class="glass about-card reveal">
+          <ul class="fact-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Based in Khulna, Bangladesh</b> — working with clients and customers worldwide, remotely.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span><b>Founder &amp; CEO, NodeX Station</b> — MERN apps, e-commerce and AI automations.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg><span><b>Full-stack MERN specialist</b> — React, Next.js, Node.js, Express, MongoDB, TypeScript.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m19.07 4.93-2.83 2.83"/><path d="M22 12h-4"/><path d="m19.07 19.07-2.83-2.83"/><path d="M12 22v-4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M2 12h4"/><path d="m4.93 4.93 2.83 2.83"/><circle cx="12" cy="12" r="4"/></svg><span><b>Operator mindset</b> — also runs clothing, construction, supply and marketing ventures.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><b>Currently open</b> — taking new projects and collaborations for this quarter.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <span class="kicker">Selected Work</span>
+      <h2>Live projects, <span class="grad-text">not mockups.</span></h2>
+      <p class="sec-sub">Everything below is deployed and in use — production stores, a 24-product starter catalogue, and the automation systems that run my own marketing and outreach.</p>
+
+      <div class="filters" role="tablist" aria-label="Filter projects by category">
+        <button class="filter active" data-filter="all" role="tab" aria-selected="true">All Work</button>
+        <button class="filter" data-filter="web" role="tab" aria-selected="false">Web Apps</button>
+        <button class="filter" data-filter="ai" role="tab" aria-selected="false">AI &amp; Automation</button>
+        <button class="filter" data-filter="ecommerce" role="tab" aria-selected="false">E-commerce / Apparel</button>
+      </div>
+
+      <div class="proj-grid" id="projGrid">
+        <!-- 1 -->
+        <article class="proj reveal" data-cat="web">
+          <div class="thumb t-mix"><div class="thumb-inner">
+            <div class="bar" style="width:38%"></div><div class="row"><div class="bar"></div><div class="bar" style="flex:.6"></div></div>
+            <div class="big">NodeX Station</div><div class="small">nodexstation.github.io</div>
+            <span class="pill">COMPANY SITE</span>
+          </div></div>
+          <div class="proj-body">
+            <h3>NodeX Station — Company Website</h3>
+            <p>One-page studio site with a CSS/SVG orbital hero, GSAP motion, services, process, live product buy rows for all 24 starters, FAQ and a working contact flow.</p>
+            <div class="tags"><span class="tag g">MERN</span><span class="tag">Next.js</span><span class="tag">Tailwind</span><span class="tag g">GSAP</span></div>
+            <div class="proj-actions">
+              <a class="mini-btn live" href="https://nodexstation.github.io/" target="_blank" rel="noopener">Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+              <a class="mini-btn code" href="https://github.com/nodexStation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Source</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="proj reveal" data-cat="web ecommerce">
+          <div class="thumb t-orange"><div class="thumb-inner">
+            <div class="bar" style="width:52%"></div><div class="row"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            <div class="big">24 Starters · Live</div><div class="small">nodex5.gumroad.com</div>
+            <span class="pill">GUMROAD STORE</span>
+          </div></div>
+          <div class="proj-body">
+            <h3>MERN Starter Store — Gumroad</h3>
+            <p>24 production-ready MERN starters sold as complete products — Clothing E-commerce, SaaS with Stripe billing, Food Delivery, LMS, Hotel Booking and more. Built, smoke-tested and verified buyable.</p>
+            <div class="tags"><span class="tag g">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag g">Stripe</span></div>
+            <div class="proj-actions">
+              <a class="mini-btn live" href="https://nodex5.gumroad.com/" target="_blank" rel="noopener">Live Store <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+              <a class="mini-btn code" href="https://github.com/nodexStation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Repos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="proj reveal" data-cat="ecommerce">
+          <div class="thumb t-light"><div class="thumb-inner">
+            <div class="row"><div class="bar"></div><div class="bar" style="flex:.5"></div></div><div class="bar" style="width:64%"></div>
+            <div class="big">HADUM Shop</div><div class="small">Next.js · COD checkout</div>
+            <span class="pill">E-COMMERCE</span>
+          </div></div>
+          <div class="proj-body">
+            <h3>HADUM Shop — Apparel Store</h3>
+            <p>Next.js e-commerce store for the HADUM apparel &amp; lifestyle brand — product catalogue, admin panel and cash-on-delivery checkout with Bangladeshi phone validation.</p>
+            <div class="tags"><span class="tag">Next.js</span><span class="tag g">Tailwind</span><span class="tag">COD Checkout</span></div>
+            <div class="proj-actions">
+              <a class="mini-btn live" href="https://hadumshop-ahmed-s-pro.vercel.app/" target="_blank" rel="noopener">Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+              <a class="mini-btn code" href="https://github.com/nodexStation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Source</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="proj reveal" data-cat="ecommerce">
+          <div class="thumb t-deep"><div class="thumb-inner">
+            <div class="bar" style="width:44%"></div><div class="row"><div class="bar"></div><div class="bar"></div></div>
+            <div class="big">RAW-SHAD</div><div class="small">Natural wellness products</div>
+            <span class="pill">E-COMMERCE</span>
+          </div></div>
+          <div class="proj-body">
+            <h3>RAW-SHAD — Natural Products Store</h3>
+            <p>Storefront for the RAW-SHAD wellness brand — beetroot powder and natural products with cart and guest checkout, honest manual-payment flow for the local market.</p>
+            <div class="tags"><span class="tag g">JavaScript</span><span class="tag">Cart</span><span class="tag g">Guest Checkout</span></div>
+            <div class="proj-actions">
+              <a class="mini-btn live" href="https://nodexstation.github.io/rawshadshop/" target="_blank" rel="noopener">Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+              <a class="mini-btn code" href="https://github.com/nodexStation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Source</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="proj reveal" data-cat="ai">
+          <div class="thumb t-slate"><div class="thumb-inner">
+            <div class="row"><div class="bar" style="flex:.7"></div><div class="bar"></div></div><div class="bar" style="width:58%"></div>
+            <div class="big">Lead Engine</div><div class="small">Maps → Audit → Score → Send</div>
+            <span class="pill">AUTOMATION</span>
+          </div></div>
+          <div class="proj-body">
+            <h3>Client-Hunting Automation</h3>
+            <p>Pipeline that finds local-service businesses on Google Maps, filters WordPress-only sites, runs a mini-audit, scores leads and sends personalised outreach — with a reply watch on top.</p>
+            <div class="tags"><span class="tag">Automation</span><span class="tag g">Lead Scoring</span><span class="tag">Gmail API</span></div>
+            <div class="proj-actions">
+              <a class="mini-btn live" href="#contact">Request a Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              <a class="mini-btn code" href="https://github.com/nodexStation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Org</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="proj reveal" data-cat="ai web">
+          <div class="thumb t-ink"><div class="thumb-inner">
+            <div class="bar" style="width:48%"></div><div class="row"><div class="bar"></div><div class="bar" style="flex:.45"></div></div>
+            <div class="big">Content Systems</div><div class="small">Instagram · LinkedIn · Daily</div>
+            <span class="pill">AI + SOCIAL</span>
+          </div></div>
+          <div class="proj-body">
+            <h3>AI Content &amp; Social Systems</h3>
+            <p>Scheduled content pipelines for Instagram and LinkedIn — carousels, reels and posts planned, published and verified daily across three brand accounts, with a watchdog so nothing ever slips.</p>
+            <div class="tags"><span class="tag g">AI Tools</span><span class="tag">Scheduling</span><span class="tag g">Instagram</span><span class="tag">LinkedIn</span></div>
+            <div class="proj-actions">
+              <a class="mini-btn live" href="https://www.instagram.com/nodex_station/" target="_blank" rel="noopener">See It Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+              <a class="mini-btn code" href="https://www.linkedin.com/in/fahimahmedasif007" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <span class="kicker">Skills &amp; Expertise</span>
+      <h2>The stack behind <span class="grad-text">the shipped work.</span></h2>
+      <p class="sec-sub">Four disciplines, one goal — software that earns. Levels reflect production use across client work, my starter catalogue and my own stores.</p>
+      <div class="skills-grid">
+        <div class="glass skill-card reveal">
+          <div class="skill-head">
+            <span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+            <div><h3>Core Engineering</h3><span>Full-stack MERN development</span></div>
+          </div>
+          <div class="srow"><div class="srow-top"><span>React &amp; Next.js</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="92"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>Node.js &amp; Express</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>TypeScript / JavaScript</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="91"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>REST APIs, Auth &amp; Payments</span><span class="lvl">ADVANCED</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+        </div>
+
+        <div class="glass skill-card reveal">
+          <div class="skill-head">
+            <span class="skill-ic c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".8"/><circle cx="17.5" cy="10.5" r=".8"/><circle cx="8.5" cy="7.5" r=".8"/><circle cx="6.5" cy="12.5" r=".8"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.43-.15-.83-.4-1.14-.24-.3-.38-.69-.38-1.12A1.68 1.68 0 0 1 14.55 16h2.03A5.42 5.42 0 0 0 22 10.55C22 5.83 17.5 2 12 2Z"/></svg></span>
+            <div><h3>UI/UX Design</h3><span>Interfaces that convert</span></div>
+          </div>
+          <div class="srow"><div class="srow-top"><span>Tailwind CSS</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="94"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>Responsive, Mobile-first Design</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="92"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>GSAP Motion &amp; Micro-interactions</span><span class="lvl">ADVANCED</span></div><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>Design Systems &amp; Branding</span><span class="lvl">ADVANCED</span></div><div class="bar-track"><div class="bar-fill" data-w="84"></div></div></div>
+        </div>
+
+        <div class="glass skill-card reveal">
+          <div class="skill-head">
+            <span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c2.5.5 4 2.6 4 5.5 0 1-.25 1.94-.68 2.77A6 6 0 0 1 20 18a3 3 0 0 1-3 3h-1.5"/><path d="M12 2a4 4 0 0 0-4 4C5.5 6.5 4 8.6 4 11.5c0 1 .25 1.94.68 2.77A6 6 0 0 0 4 18a3 3 0 0 0 3 3h1.5"/><path d="M12 2v20"/></svg></span>
+            <div><h3>Business &amp; Automation</h3><span>Systems that sell while you sleep</span></div>
+          </div>
+          <div class="srow"><div class="srow-top"><span>AI Automation Workflows</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="89"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>E-commerce Operations</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>Lead Generation Pipelines</span><span class="lvl">ADVANCED</span></div><div class="bar-track"><div class="bar-fill" data-w="86"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>Digital Marketing &amp; Content Systems</span><span class="lvl">ADVANCED</span></div><div class="bar-track"><div class="bar-fill" data-w="83"></div></div></div>
+        </div>
+
+        <div class="glass skill-card reveal">
+          <div class="skill-head">
+            <span class="skill-ic c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></span>
+            <div><h3>Frameworks &amp; DBs</h3><span>The supporting toolkit</span></div>
+          </div>
+          <div class="srow"><div class="srow-top"><span>MongoDB &amp; Mongoose</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="89"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>WordPress</span><span class="lvl">ADVANCED</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>Git, GitHub &amp; Vercel Deploys</span><span class="lvl hot">EXPERT</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+          <div class="srow"><div class="srow-top"><span>Stripe, Gumroad &amp; Store Platforms</span><span class="lvl">ADVANCED</span></div><div class="bar-track"><div class="bar-fill" data-w="86"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTURES -->
+  <section id="ventures">
+    <div class="wrap">
+      <span class="kicker">Ventures &amp; Services</span>
+      <h2>Businesses I <span class="grad-text">build and run.</span></h2>
+      <p class="sec-sub">Not side projects — operating ventures with live stores, real products and daily content systems behind them.</p>
+      <div class="vent-grid">
+        <article class="glass vent reveal">
+          <span class="vmark">NX</span>
+          <div><span class="vrole">Software · Services · Products</span><h3>NodeX Station</h3></div>
+          <p>MERN web apps, e-commerce builds and AI automations for clients — plus a product line of production-ready starters sold worldwide.</p>
+          <div class="tags"><span class="tag g">MERN Apps</span><span class="tag">AI Automation</span><span class="tag g">Fiverr Gig Live</span></div>
+          <div class="metrics">
+            <div class="metric"><b>24</b><span>Gumroad starters live</span></div>
+            <div class="metric"><b>4</b><span>Product categories</span></div>
+          </div>
+          <a class="vlink" href="https://nodexstation.github.io/" target="_blank" rel="noopener">Visit NodeX Station <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="glass vent reveal">
+          <span class="vmark" style="color:var(--accent-2)">HD</span>
+          <div><span class="vrole">Apparel · Lifestyle Brand</span><h3>HADUM Shop</h3></div>
+          <p>Apparel and lifestyle brand store built on Next.js — full catalogue, admin management and COD checkout tuned for Bangladeshi shoppers.</p>
+          <div class="tags"><span class="tag">Next.js Store</span><span class="tag g">COD Checkout</span><span class="tag">Instagram Brand</span></div>
+          <div class="metrics">
+            <div class="metric"><b>Live</b><span>Store on Vercel</span></div>
+            <div class="metric"><b>COD</b><span>BD phone-validated</span></div>
+          </div>
+          <a class="vlink" href="https://hadumshop-ahmed-s-pro.vercel.app/" target="_blank" rel="noopener">Shop HADUM <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="glass vent reveal">
+          <span class="vmark">RS</span>
+          <div><span class="vrole">Natural Wellness Brand</span><h3>RAW-SHAD</h3></div>
+          <p>Natural wellness products brand — beetroot powder and seasonal natural goods, sold through a lightweight store with guest checkout.</p>
+          <div class="tags"><span class="tag g">Beetroot Powder</span><span class="tag">Guest Checkout</span><span class="tag g">Local Delivery</span></div>
+          <div class="metrics">
+            <div class="metric"><b>4</b><span>Products in catalogue</span></div>
+            <div class="metric"><b>Live</b><span>Store + daily content</span></div>
+          </div>
+          <a class="vlink" href="https://nodexstation.github.io/rawshadshop/" target="_blank" rel="noopener">Shop RAW-SHAD <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <span class="kicker">Contact</span>
+      <h2>Let's build something <span class="grad-text">that sells.</span></h2>
+      <p class="sec-sub">Have a store to launch, an app to build, or a process to automate? Send a message — I reply from my personal inbox.</p>
+      <div class="contact-grid">
+        <div class="glass c-info reveal">
+          <h3>Reach me directly</h3>
+          <p>Fastest route is email. Copy it, or use the form — it opens your mail app addressed to me with your message ready to send.</p>
+          <div class="email-box">
+            <code id="emailText">ahmedasif0007@gmail.com</code>
+            <button class="copy-btn" id="copyBtn" type="button" aria-label="Copy email address ahmedasif0007@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span id="copyLabel">Copy</span>
+            </button>
+          </div>
+          <div class="socials">
+            <a class="soc" href="https://www.linkedin.com/in/fahimahmedasif007" target="_blank" rel="noopener" aria-label="LinkedIn — Fahim Ahmed Asif">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>LinkedIn</a>
+            <a class="soc" href="https://github.com/ahmedasif007" target="_blank" rel="noopener" aria-label="GitHub — personal profile">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a>
+            <a class="soc" href="https://github.com/nodexStation" target="_blank" rel="noopener" aria-label="GitHub — NodeX Station organisation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>NodeX GitHub</a>
+            <a class="soc" href="https://www.instagram.com/nodex_station/" target="_blank" rel="noopener" aria-label="Instagram — NodeX Station">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>Instagram</a>
+            <a class="soc" href="https://x.com/nodeXstation" target="_blank" rel="noopener" aria-label="X (Twitter) — @nodeXstation">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z"/></svg>@nodeXstation</a>
+          </div>
+          <p class="loc-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Khulna, Bangladesh · Working remotely, worldwide
+          </p>
+          <p class="loc-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            Prefer email? Write to <a href="mailto:ahmedasif0007@gmail.com" style="color:#C25200;text-decoration:none;font-weight:700">ahmedasif0007@gmail.com</a>
+          </p>
+        </div>
+
+        <form class="glass cform reveal" id="contactForm" novalidate>
+          <div class="field" id="fName">
+            <label for="inName">Your name</label>
+            <input id="inName" name="name" type="text" placeholder="e.g. Sarah Khan" autocomplete="name" />
+            <p class="hint" data-hint></p>
+          </div>
+          <div class="field" id="fEmail">
+            <label for="inEmail">Your email</label>
+            <input id="inEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" />
+            <p class="hint" data-hint></p>
+          </div>
+          <div class="field" id="fMsg">
+            <label for="inMsg">Project details</label>
+            <textarea id="inMsg" name="message" rows="5" placeholder="Tell me what you want to build — a store, a web app, an automation…"></textarea>
+            <p class="hint" data-hint></p>
+          </div>
+          <button class="btn btn-primary submit-btn" id="submitBtn" type="submit">
+            <span id="submitLabel">Send Message</span>
+            <svg id="submitIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+          <p class="form-note">Opens your email app addressed to ahmedasif0007@gmail.com — nothing is stored on this page.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p>© <span id="year">2026</span> Fahim Ahmed Asif · Founder, NodeX Station. Built with the MERN stack mindset — shipped from Khulna.</p>
+    <span class="clock" title="Local time in Khulna, Bangladesh">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="dhakaClock">Khulna · --:--:--</span>
+    </span>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<div id="toast" role="status" aria-live="polite">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  <span id="toastText">Copied</span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var CONTACT_EMAIL = "ahmedasif0007@gmail.com";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- mobile menu ---------- */
+  var burger = document.getElementById("burger");
+  var menu = document.getElementById("mobileMenu");
+  burger.addEventListener("click", function(){
+    var open = menu.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  menu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ menu.classList.remove("open"); burger.setAttribute("aria-expanded","false"); });
+  });
+
+  /* ---------- terminal typing ---------- */
+  var lines = [
+    '<span class="tk">const</span> <span class="tp">developer</span> = {',
+    '  name: <span class="ts">"Fahim Ahmed Asif"</span>,',
+    '  role: <span class="ts">"Founder &amp; CEO @ NodeX Station"</span>,',
+    '  stack: [<span class="ts">"React"</span>, <span class="ts">"Next.js"</span>, <span class="ts">"Node.js"</span>,',
+    '          <span class="ts">"TypeScript"</span>, <span class="ts">"MongoDB"</span>],',
+    '  ventures: <span class="tn">3</span>, <span class="tc">// NodeX · HADUM · RAW-SHAD</span>',
+    '  productsLive: <span class="tn">24</span>, <span class="tc">// Gumroad starters</span>',
+    '  focus: <span class="ts">"apps &amp; automations that sell"</span>,',
+    '  openForWork: <span class="tk">true</span>',
+    '};',
+    '<span class="tc">// Khulna, BD → shipping worldwide</span>'
+  ];
+  var term = document.getElementById("termBody");
+  function renderTerminal(upto){
+    var html = "";
+    for (var i = 0; i < upto && i < lines.length; i++) html += lines[i] + "<br>";
+    if (upto < lines.length) html += '<span class="cursor"></span>';
+    else html += '<span class="cursor"></span>';
+    term.innerHTML = html;
+  }
+  if (reduceMotion) { renderTerminal(lines.length); }
+  else {
+    var li = 0;
+    renderTerminal(0);
+    var timer = setInterval(function(){
+      li++;
+      renderTerminal(li);
+      if (li >= lines.length) clearInterval(timer);
+    }, 260);
+  }
+
+  /* ---------- project filters ---------- */
+  var filters = document.querySelectorAll(".filter");
+  var cards = document.querySelectorAll(".proj");
+  filters.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      filters.forEach(function(b){ b.classList.remove("active"); b.setAttribute("aria-selected","false"); });
+      btn.classList.add("active"); btn.setAttribute("aria-selected","true");
+      var f = btn.getAttribute("data-filter");
+      cards.forEach(function(card){
+        var cats = (card.getAttribute("data-cat") || "").split(" ");
+        var show = (f === "all") || cats.indexOf(f) !== -1;
+        card.classList.toggle("hide", !show);
+        if (show) card.classList.add("in");
+      });
+    });
+  });
+
+  /* ---------- reveal on scroll + skill bars ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in");
+      e.target.querySelectorAll(".bar-fill").forEach(function(bar){
+        bar.style.width = bar.getAttribute("data-w") + "%";
+      });
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  /* ---------- copy email ---------- */
+  var toast = document.getElementById("toast");
+  var toastText = document.getElementById("toastText");
+  var toastTimer = null;
+  function showToast(msg){
+    toastText.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 2600);
+  }
+  var copyBtn = document.getElementById("copyBtn");
+  var copyLabel = document.getElementById("copyLabel");
+  copyBtn.addEventListener("click", function(){
+    function done(){
+      copyBtn.classList.add("done");
+      copyLabel.textContent = "Copied";
+      showToast("Email copied — " + CONTACT_EMAIL);
+      setTimeout(function(){ copyBtn.classList.remove("done"); copyLabel.textContent = "Copy"; }, 2400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(CONTACT_EMAIL).then(done).catch(function(){ fallback(); });
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = CONTACT_EMAIL; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch(e){ showToast(CONTACT_EMAIL); }
+      document.body.removeChild(ta);
+    }
+  });
+
+  /* ---------- contact form validation + submit ---------- */
+  var form = document.getElementById("contactForm");
+  var fields = {
+    name:  { wrap: document.getElementById("fName"), input: document.getElementById("inName"),
+             test: function(v){ return v.trim().length >= 2; },
+             ok: "Looks good.", err: "Please enter your name (at least 2 characters)." },
+    email: { wrap: document.getElementById("fEmail"), input: document.getElementById("inEmail"),
+             test: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
+             ok: "Valid email — I'll reply here.", err: "That email doesn't look right yet." },
+    msg:   { wrap: document.getElementById("fMsg"), input: document.getElementById("inMsg"),
+             test: function(v){ return v.trim().length >= 10; },
+             ok: "Great — enough detail to start.", err: "A little more detail helps (10+ characters)." }
+  };
+  function validate(key, showOk){
+    var f = fields[key];
+    var hint = f.wrap.querySelector("[data-hint]");
+    var valid = f.test(f.input.value);
+    if (f.input.value.trim() === "") {
+      f.wrap.classList.remove("ok","err"); hint.textContent = ""; return false;
+    }
+    f.wrap.classList.toggle("ok", valid);
+    f.wrap.classList.toggle("err", !valid);
+    hint.textContent = valid ? (showOk ? f.ok : "") : f.err;
+    if (valid && !showOk) hint.textContent = "";
+    return valid;
+  }
+  Object.keys(fields).forEach(function(key){
+    var input = fields[key].input;
+    input.addEventListener("input", function(){ validate(key, true); });
+    input.addEventListener("blur", function(){ validate(key, true); });
+  });
+  var submitBtn = document.getElementById("submitBtn");
+  var submitLabel = document.getElementById("submitLabel");
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var allOk = ["name","email","msg"].map(function(k){ return validate(k, true); }).every(Boolean);
+    ["name","email","msg"].forEach(function(k){
+      if (!fields[k].test(fields[k].input.value)) {
+        fields[k].wrap.classList.add("err");
+        fields[k].wrap.querySelector("[data-hint]").textContent = fields[k].err;
+      }
+    });
+    if (!allOk) {
+      var firstErr = form.querySelector(".field.err input, .field.err textarea");
+      if (firstErr) firstErr.focus();
+      return;
+    }
+    submitBtn.classList.add("sending");
+    submitLabel.textContent = "Preparing your email…";
+    setTimeout(function(){
+      var subject = encodeURIComponent("New project enquiry — from " + fields.name.input.value.trim());
+      var body = encodeURIComponent(
+        "Hi Fahim,\n\n" + fields.msg.input.value.trim() +
+        "\n\n— " + fields.name.input.value.trim() + " (" + fields.email.input.value.trim() + ")" +
+        "\nReply to: " + fields.email.input.value.trim()
+      );
+      var mailLink = document.createElement("a");
+      mailLink.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + body;
+      document.body.appendChild(mailLink); mailLink.click(); document.body.removeChild(mailLink);
+      submitBtn.classList.remove("sending");
+      submitBtn.classList.add("sent");
+      submitLabel.textContent = "Opening your email app ✓";
+      showToast("Your email app is opening — addressed to " + CONTACT_EMAIL);
+      setTimeout(function(){
+        submitBtn.classList.remove("sent");
+        submitLabel.textContent = "Send Message";
+      }, 4200);
+    }, 650);
+  });
+
+  /* ---------- Dhaka clock ---------- */
+  var clockEl = document.getElementById("dhakaClock");
+  var fmt = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Dhaka", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true });
+  var fmtDay = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Dhaka", weekday: "short" });
+  function tick(){
+    var now = new Date();
+    clockEl.textContent = "Khulna · " + fmtDay.format(now) + " " + fmt.format(now).toUpperCase() + " (GMT+6)";
+  }
+  tick(); setInterval(tick, 1000);
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- back to top ---------- */
+  var toTop = document.getElementById("toTop");
+  window.addEventListener("scroll", function(){
+    toTop.classList.toggle("show", window.scrollY > 600);
+  }, { passive: true });
+  toTop.addEventListener("click", function(){
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+})();
+</script>
+</body>
+</html>
